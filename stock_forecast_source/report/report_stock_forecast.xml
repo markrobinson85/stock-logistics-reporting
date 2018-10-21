@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_stock_level_forecast_pivot" model="ir.ui.view">
+        <field name="name">Stock.forecast.pivot</field>
+        <field name="model">report.stock.forecast</field>
+        <field name="inherit_id" ref="stock.view_stock_level_forecast_pivot" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="source" type="row"/>
+                <field name="date" type="col" interval="week" />
+                <field name="location_id" type="col"/>
+                <field name="cumulative_quantity" type="measure"/>
+            </field>
+            <field name="quantity" position="after">
+                <field name="incoming_quantity" type="measure"/>
+                <field name="outgoing_quantity" type="measure"/>
+            </field>
+        </field>
+    </record>
+
+    <!--<record id="view_stock_level_forecast_graph" model="ir.ui.view">-->
+        <!--<field name="name">Stock.forecast.graph</field>-->
+        <!--<field name="model">report.stock.forecast</field>-->
+        <!--<field name="inherit_id" ref="stock.view_stock_level_forecast_graph"/>-->
+        <!--<field name="arch" type="xml">-->
+            <!--<field name="product_id" position="replace">-->
+                    <!--<field name="location_id" type="row"/>-->
+                    <!--<field name="date" interval="month" type="col"/>-->
+                    <!--<field name="cumulative_quantity" type="measure"/>-->
+                    <!--<field name="quantity" type="measure"/>-->
+                    <!--<field name="incoming_quantity" type="measure"/>-->
+                    <!--<field name="outgoing_quantity" type="measure"/>-->
+            <!--</field>-->
+        <!--</field>-->
+    <!--</record>-->
+
+    <menuitem parent="stock.menu_warehouse_report" action="stock.action_stock_level_forecast_report_product" id="menu_report_action_stock_level_forecast_report_product" sequence="2" />
+
+</odoo>
