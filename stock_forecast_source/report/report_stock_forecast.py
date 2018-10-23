@@ -19,7 +19,7 @@ class ReportStockForecat(models.Model):
     source = fields.Char(string='Source', readonly=True)
     cumulative_quantity = fields.Float(string='Cumulative Quantity', readonly=True)
 
-    # Borrowed sql from v8 stok_forecast_report module.
+    # Borrowed sql from v8 stock_forecast_report module.
     @api.model_cr
     def init(self):
         tools.drop_view_if_exists(self._cr, 'report_stock_forecast')
